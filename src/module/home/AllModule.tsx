@@ -5,7 +5,7 @@ import { GraduationCap } from 'lucide-react';
 
 const AllModulesPage = () => {
   return (
-    <main className="py-24 bg-background">
+    <main className=" bg-background">
       <div className="container mx-auto px-4">
         {/* Page Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">

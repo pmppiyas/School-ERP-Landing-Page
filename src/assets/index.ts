@@ -16,6 +16,7 @@ import {
 import hero1 from '@/assets/hero3.jpg';
 import hero2 from '@/assets/hero4.jpg';
 import hero3 from '@/assets/hero5.jpg';
+import agent from '@/assets/agent.png';
 
 export const bannerSlides = [
   {
@@ -112,3 +113,5 @@ export const allmodulePage = [
     icon: Settings,
   },
 ];
+
+export const assets = { agent };

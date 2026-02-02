@@ -33,7 +33,7 @@ const features = [
 
 const Features = () => {
   return (
-    <section className="py-24 bg-background">
+    <section className=" bg-background">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
