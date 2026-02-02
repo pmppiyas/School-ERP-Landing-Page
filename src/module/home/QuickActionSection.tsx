@@ -26,7 +26,7 @@ const quickActions = [
 
 const QuickActionsSection = () => {
   return (
-    <section className="relative w-full py-28">
+    <section className="relative w-full py-20">
       <div className="absolute inset-0 bg-linear-to-br from-primary/20 via-purple-100 to-primary/30 -z-10" />
 
       <div className="container mx-auto px-6 relative z-10">

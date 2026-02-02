@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <div className="flex flex-col space-y-24 min-h-screen w-full mx-auto items-center justify-center font-sans">
       <Banner />
-      <Features />
       <HubSection />
+      <Features />
       <AllModulesPage />
       <QuickActionsSection />
       <SmartReportingSection />

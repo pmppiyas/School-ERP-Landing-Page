@@ -35,20 +35,24 @@ const UserCountSection = () => {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          {/* Heading */}
+          {/* Main Heading with Gradient */}
           <h2
             className="text-4xl md:text-5xl font-extrabold
-               bg-linear-to-r from-primary via-primary/80 to-purple-600
-               bg-clip-text text-transparent mb-4 leading-snug"
+                 bg-linear-to-r from-primary via-primary/80 to-purple-600
+                 bg-clip-text text-transparent mb-6 leading-tight"
           >
-            আমাদের সফটওয়্যার ব্যবহারকারীর সংখ্যা
+            প্রতিটি প্রতিষ্ঠানের অটল বিশ্বাস আর আমাদের পথচলা
+            <span className="block text-2xl md:text-3xl font-semibold mt-2 text-slate-700">
+              — যা আমাদের প্রতিনিয়ত অনুপ্রাণিত করে।
+            </span>
           </h2>
 
-          {/* Subtext */}
-          <p className="text-lg text-muted-foreground">
-            প্রতিটি বিভাগে কতজন ব্যবহারকারী আছে তা এক নজরে দেখুন। আমাদের School
-            ERP প্ল্যাটফর্ম ব্যবহার করে আপনার প্রতিষ্ঠান পরিচালনা সহজ, দ্রুত ও
-            নিরাপদ।
+          {/* Description Text */}
+          <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+            আমাদের সফটওয়্যারটি শুধু একটি মাধ্যম নয়, বরং হাজারো শিক্ষা
+            প্রতিষ্ঠানের প্রশাসনিক সফলতার সঙ্গী। ব্যবহারকারীদের প্রতিটি মূল্যবান
+            মতামত আর অগাধ বিশ্বাসই আমাদের এই দীর্ঘ পথচলার মূল শক্তি। আমরা গর্বিত
+            যে, আপনাদের আস্থায় আমরা আজ ডিজিটাল শিক্ষা বিপ্লবের অগ্রভাগে।
           </p>
         </div>
 
