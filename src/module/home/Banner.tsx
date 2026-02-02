@@ -2,7 +2,7 @@
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import Image from 'next/image';
-import { bannerSlides } from '@/assets/bannerSlides';
+import { bannerSlides } from '@/assets';
 
 const Banner = () => {
   const [emblaRef] = useEmblaCarousel({ loop: true }, [
