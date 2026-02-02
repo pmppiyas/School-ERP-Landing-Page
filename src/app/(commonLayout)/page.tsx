@@ -4,6 +4,7 @@ import Features from '@/module/home/Features';
 import HubSection from '@/module/home/HubSection';
 import QuickActionsSection from '@/module/home/QuickActionSection';
 import SmartReportingSection from '@/module/home/ReportingSection';
+import UserCountSection from '@/module/home/UserCountSection';
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <AllModulesPage />
       <QuickActionsSection />
       <SmartReportingSection />
+      <UserCountSection />
     </div>
   );
 }
