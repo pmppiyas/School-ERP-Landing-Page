@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import { assets } from '@/assets';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
       'Transform your school with automated result processing, Excel integration, and smart reporting.',
     images: [
       {
-        url: '/og-image.jpg',
+       url: (assets.home).src,
         width: 1200,
         height: 630,
         alt: 'Hello Soft School ERP Dashboard',
@@ -60,6 +61,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

@@ -1,7 +1,7 @@
 import { School } from 'lucide-react';
 import Link from 'next/link';
 
-const Logo = () => {
+const Logo = ({scrolled}:{scrolled?: boolean}) => {
   return (
     <Link href="/" className="transition-opacity hover:opacity-90">
       <div className="flex items-center gap-2">
@@ -9,7 +9,7 @@ const Logo = () => {
           <School size={24} />
         </div>
 
-        <span className="text-xl font-bold tracking-tight text-white ">
+        <span className={`text-xl font-bold tracking-tight ${scrolled ? "text-white" :"text-white" }`}>
           Hello Soft{' '}
           <span className="text-primary text-sm font-medium">ERP</span>
         </span>

@@ -1,13 +1,24 @@
 'use client';
 
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Logo from '@/module/shared/Logo';
 import Link from 'next/link';
 
+
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navLinks = [
     { name: 'Features', href: '/features' },
@@ -17,7 +28,11 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0  w-full z-50 bg-transparent border-b border-white/10 backdrop-blur-[2px] ">
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 overflow-hidden ${
+        scrolled
+          ? 'bg-gradient-to-br from-blue-950 via-indigo-950 to-black shadow-2xl py-2'
+          : 'bg-transparent py-4'
+      }`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex h-16 items-center justify-between">
           {/* Logo Section */}

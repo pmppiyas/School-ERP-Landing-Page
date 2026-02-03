@@ -25,6 +25,7 @@ import fee from '@/assets/fee.jpg';
 import student from '@/assets/kid6.jpg';
 import teacher from '@/assets/teacher.jpg';
 import schedule from '@/assets/schedule.jpg';
+import home from '@/assets/home.png';
 
 export const bannerSlides = [
   {
@@ -138,5 +139,6 @@ export const assets = {
   fee,
   student,
   teacher,
-  schedule
+  schedule,
+  home,
 };
