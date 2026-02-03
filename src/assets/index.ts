@@ -17,6 +17,11 @@ import hero1 from '@/assets/hero3.jpg';
 import hero2 from '@/assets/hero4.jpg';
 import hero3 from '@/assets/hero5.jpg';
 import agent from '@/assets/agent.png';
+import biomet from '@/assets/biomet.jpg';
+import admission from '@/assets/admission.jpg';
+import result from '@/assets/result.jpg';
+import printer from '@/assets/printer.png';
+import fee from '@/assets/fee.jpg';
 
 export const bannerSlides = [
   {
@@ -114,4 +119,11 @@ export const allmodulePage = [
   },
 ];
 
-export const assets = { agent };
+export const atttendaceFeatures = [
+  'শিক্ষার্থী ও শিক্ষকদের দৈনিক হাজিরা অটোমেটিকভাবে সংরক্ষণ',
+  'অভিভাবকদের কাছে হাজিরার তথ্য এসএমএস নোটিফিকেশন',
+  'মাসিক ও বাৎসরিক হাজিরা রিপোর্ট এক ক্লিকে',
+  'ম্যানুয়াল ভুল ছাড়াই নির্ভুল উপস্থিতি হিসাব',
+];
+
+export const assets = { agent, biomet, admission, result, printer, fee };
