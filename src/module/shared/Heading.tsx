@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default async function Heading({ heading }: { heading: string }) {
+export default async function Heading({ heading }: { heading?: string }) {
   return (
     <div className="relative w-full h-60 lg:h-76 bg-linear-to-br from-fuchsia-950 via-purple-950 to-black/80 overflow-hidden flex flex-col items-center justify-center">
 
