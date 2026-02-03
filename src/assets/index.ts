@@ -22,6 +22,9 @@ import admission from '@/assets/admission.jpg';
 import result from '@/assets/result.jpg';
 import printer from '@/assets/printer.png';
 import fee from '@/assets/fee.jpg';
+import student from '@/assets/kid6.jpg';
+import teacher from '@/assets/teacher.jpg';
+import schedule from '@/assets/schedule.jpg';
 
 export const bannerSlides = [
   {
@@ -126,4 +129,14 @@ export const atttendaceFeatures = [
   'ম্যানুয়াল ভুল ছাড়াই নির্ভুল উপস্থিতি হিসাব',
 ];
 
-export const assets = { agent, biomet, admission, result, printer, fee };
+export const assets = {
+  agent,
+  biomet,
+  admission,
+  result,
+  printer,
+  fee,
+  student,
+  teacher,
+  schedule
+};
