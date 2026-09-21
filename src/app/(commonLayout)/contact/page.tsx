@@ -1,10 +1,9 @@
 import ContactPage from '@/module/contact/ContactPage';
 
-
 const page = () => {
   return (
-    <div>
-       <ContactPage/>
+    <div className="w-full min-h-screen">
+      <ContactPage />
     </div>
   );
 };

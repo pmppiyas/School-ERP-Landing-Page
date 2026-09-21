@@ -1,103 +1,235 @@
 'use client';
 
-import { useState , useEffect} from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import {
+  Menu,
+  X,
+  Sparkles,
+  ArrowUpRight,
+  Home,
+  Layers,
+  LayoutGrid,
+  ShieldCheck,
+  PhoneCall,
+  LogIn,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Logo from '@/module/shared/Logo';
 import Link from 'next/link';
-
+import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
-const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
+  // Scroll detection
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 25);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Auto-close mobile menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
+
+  // Close mobile drawer on desktop resize & on Escape key
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsOpen(false);
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   const navLinks = [
-    { name: 'Features', href: '/features' },
-    { name: 'Management', href: '/management' },
-    { name: 'Solutions', href: '/solutions' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'হোম', href: '/', icon: Home },
+    { name: 'ফিচারসমূহ', href: '/features', icon: Layers },
+    { name: 'ম্যানেজমেন্ট', href: '/management', icon: LayoutGrid },
+    { name: 'সমাধান', href: '/solutions', icon: ShieldCheck },
+    { name: 'যোগাযোগ', href: '/contact', icon: PhoneCall },
   ];
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 overflow-hidden ${
-        scrolled
-          ? 'bg-gradient-to-br from-blue-950 via-indigo-950 to-black shadow-2xl py-2'
-          : 'bg-transparent py-4'
-      }`}>
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo Section */}
-          <Logo />
+    <>
+      {/* Outside Click / Backdrop Overlay */}
+      {isOpen && (
+        <div
+          onClick={() => setIsOpen(false)}
+          className="fixed inset-0 z-40 bg-blue-950/25 backdrop-blur-[2px] md:hidden animate-in fade-in duration-200"
+          aria-hidden="true"
+        />
+      )}
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-lg font-medium text-white transition-colors hover:text-primary"
-              >
-                {link.name}
+      <header
+        className={`fixed top-0 inset-x-0 z-50 pt-2 pb-2 sm:pt-3 sm:pb-3 px-3 sm:px-6 pointer-events-none transition-all duration-300 ${
+          scrolled ? 'backdrop-blur-md' : 'backdrop-blur-xs'
+        }`}
+      >
+        <div
+          className={`max-w-7xl mx-auto flex items-center justify-between px-3.5 sm:px-6 py-2 sm:py-2.5 rounded-full pointer-events-auto transition-all duration-300 ${
+            scrolled
+              ? 'bg-white/95 text-slate-900 backdrop-blur-2xl border border-blue-200/90 shadow-[0_12px_40px_-5px_rgba(37,99,235,0.2)]'
+              : 'bg-white/90 text-slate-900 backdrop-blur-xl border border-white/90 shadow-[0_8px_30px_rgb(0,0,0,0.1)]'
+          }`}
+        >
+          {/* Brand Logo */}
+          <Logo onClick={() => setIsOpen(false)} />
+
+          {/* Desktop Navigation Links */}
+          <nav className="hidden md:flex items-center gap-1 p-1 rounded-full bg-slate-100/90 border border-slate-200/80">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className={`relative px-3.5 py-1.5 text-xs lg:text-sm font-semibold rounded-full transition-all duration-200 ${
+                    isActive
+                      ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm shadow-blue-500/30 font-bold'
+                      : 'text-slate-700 hover:text-blue-600 hover:bg-white/90'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Right Side CTA Actions */}
+          <div className="hidden md:flex items-center gap-2.5">
+            <Link
+              href="/login"
+              className="text-xs lg:text-sm font-bold text-slate-700 hover:text-blue-600 px-3 py-1.5 transition-colors"
+            >
+              লগইন
+            </Link>
+
+            <Button
+              size="sm"
+              asChild
+              className="relative group overflow-hidden rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 hover:from-blue-700 hover:via-indigo-700 hover:to-sky-700 text-white text-xs lg:text-sm font-bold px-5 h-9 shadow-md shadow-blue-500/25 hover:shadow-blue-500/40 transition-all"
+            >
+              <Link href="/contact" className="flex items-center gap-1.5">
+                <Sparkles className="w-3.5 h-3.5 text-sky-200 group-hover:rotate-12 transition-transform" />
+                <span>ফ্রি ডেমো</span>
+                <ArrowUpRight className="w-3.5 h-3.5 opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </Link>
-            ))}
-          </div>
-
-          {/* Right Side Buttons */}
-          <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" size="sm" className="text-white">
-              Sign In
-            </Button>
-            <Button size="sm" className="bg-primary hover:bg-primary/90">
-              Get Started
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          {/* Mobile Actions & Menu Toggle */}
+          <div className="md:hidden flex items-center gap-1.5">
+            <Button
+              size="sm"
+              asChild
+              className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[11px] font-bold h-7.5 px-3 rounded-full shadow-xs"
+            >
+              <Link href="/contact" onClick={() => setIsOpen(false)}>
+                ডেমো
+              </Link>
+            </Button>
+
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-white hover:text-white"
+              aria-label="Toggle navigation menu"
+              className="p-1.5 rounded-full text-slate-800 hover:bg-slate-100 transition-colors focus:outline-none"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
           </div>
         </div>
 
-        {/* Mobile Navigation Menu */}
+        {/* Mobile Drawer Dropdown */}
         {isOpen && (
-          <div className="md:hidden p-6  animate-in slide-in-from-top-2 duration-300 bg-card">
-            <div className="flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-base font-medium text-foreground hover:text-primary"
-                  onClick={() => setIsOpen(false)}
+          <div className="md:hidden max-w-7xl mx-auto mt-2 p-4 rounded-3xl bg-white/98 backdrop-blur-2xl border border-blue-100/90 shadow-2xl pointer-events-auto animate-in slide-in-from-top-2 duration-200">
+            <div className="flex flex-col gap-1">
+              {navLinks.map((link) => {
+                const Icon = link.icon;
+                const isActive = pathname === link.href;
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className={`flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-sm font-semibold transition-all ${
+                      isActive
+                        ? 'bg-blue-50 border border-blue-200 text-blue-700 font-bold'
+                        : 'text-slate-700 hover:bg-slate-50'
+                    }`}
+                  >
+                    <div
+                      className={`p-1.5 rounded-xl ${
+                        isActive
+                          ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-xs'
+                          : 'bg-slate-100 text-slate-600'
+                      }`}
+                    >
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <span>{link.name}</span>
+                  </Link>
+                );
+              })}
+
+              <div className="h-px bg-slate-100 my-2" />
+
+              {/* Mobile Footer Actions */}
+              <div className="grid grid-cols-2 gap-2 pt-1">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  asChild
+                  className="w-full rounded-2xl border-slate-200 text-slate-800 bg-slate-50 hover:bg-slate-100 font-bold"
                 >
-                  {link.name}
-                </Link>
-              ))}
-              <hr className="border-border" />
-              <div className="flex flex-col gap-3">
-                <Button variant="outline" className="w-full">
-                  Sign In
+                  <Link
+                    href="/login"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-center gap-1.5"
+                  >
+                    <LogIn className="w-3.5 h-3.5" />
+                    <span>লগইন</span>
+                  </Link>
                 </Button>
-                <Button className="w-full">Get Started</Button>
+
+                <Button
+                  size="sm"
+                  asChild
+                  className="w-full rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 text-white font-bold shadow-md shadow-blue-500/25"
+                >
+                  <Link
+                    href="/contact"
+                    onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-center gap-1.5"
+                  >
+                    <span>ডেমো নিন</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </Link>
+                </Button>
               </div>
             </div>
           </div>
         )}
-      </div>
-    </nav>
+      </header>
+    </>
   );
 };
 

@@ -8,7 +8,7 @@ import UserCountSection from '@/module/home/UserCountSection';
 
 export default function Home() {
   return (
-    <div className="flex flex-col space-y-24 min-h-screen w-full mx-auto items-center justify-center font-sans">
+    <div className="flex flex-col w-full min-h-screen font-sans overflow-x-hidden">
       <Banner />
       <HubSection />
       <Features />
