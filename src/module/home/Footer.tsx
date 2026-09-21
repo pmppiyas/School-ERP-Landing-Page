@@ -18,6 +18,7 @@ const quickLinks = [
   { name: 'প্রধান ফিচারসমূহ', href: '/features' },
   { name: 'ম্যানেজমেন্ট মডিউল', href: '/management' },
   { name: 'সমাধানসমূহ', href: '/solutions' },
+  { name: 'লাইভ ডেমো পোর্টাল', href: '/demo' },
   { name: 'যোগাযোগ ও ডেমো', href: '/contact' },
 ];
 

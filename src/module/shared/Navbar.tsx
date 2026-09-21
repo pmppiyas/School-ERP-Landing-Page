@@ -17,6 +17,7 @@ import { Button } from '@/components/ui/button';
 import Logo from '@/module/shared/Logo';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { env } from '@/config/env';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,6 +66,7 @@ const Navbar = () => {
     { name: 'ফিচারসমূহ', href: '/features', icon: Layers },
     { name: 'ম্যানেজমেন্ট', href: '/management', icon: LayoutGrid },
     { name: 'সমাধান', href: '/solutions', icon: ShieldCheck },
+    { name: 'লাইভ ডেমো', href: '/demo', icon: Sparkles },
     { name: 'যোগাযোগ', href: '/contact', icon: PhoneCall },
   ];
 
@@ -104,7 +106,7 @@ const Navbar = () => {
                   href={link.href}
                   className={`relative px-3.5 py-1.5 text-xs lg:text-sm font-semibold rounded-full transition-all duration-200 ${
                     isActive
-                      ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-sm shadow-blue-500/30 font-bold'
+                      ? 'bg-linear-to-r from-blue-600 to-indigo-600 text-white shadow-sm shadow-blue-500/30 font-bold'
                       : 'text-slate-700 hover:text-blue-600 hover:bg-white/90'
                   }`}
                 >
@@ -116,19 +118,21 @@ const Navbar = () => {
 
           {/* Right Side CTA Actions */}
           <div className="hidden md:flex items-center gap-2.5">
-            <Link
-              href="/login"
+            <a
+              href={`${env.frontendUrl}/login`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-xs lg:text-sm font-bold text-slate-700 hover:text-blue-600 px-3 py-1.5 transition-colors"
             >
               লগইন
-            </Link>
+            </a>
 
             <Button
               size="sm"
               asChild
-              className="relative group overflow-hidden rounded-full bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 hover:from-blue-700 hover:via-indigo-700 hover:to-sky-700 text-white text-xs lg:text-sm font-bold px-5 h-9 shadow-md shadow-blue-500/25 hover:shadow-blue-500/40 transition-all"
+              className="relative group overflow-hidden rounded-full bg-linear-to-r from-blue-600 via-indigo-600 to-sky-600 hover:from-blue-700 hover:via-indigo-700 hover:to-sky-700 text-white text-xs lg:text-sm font-bold px-5 h-9 shadow-md shadow-blue-500/25 hover:shadow-blue-500/40 transition-all"
             >
-              <Link href="/contact" className="flex items-center gap-1.5">
+              <Link href="/demo" className="flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-sky-200 group-hover:rotate-12 transition-transform" />
                 <span>ফ্রি ডেমো</span>
                 <ArrowUpRight className="w-3.5 h-3.5 opacity-90 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
@@ -141,9 +145,9 @@ const Navbar = () => {
             <Button
               size="sm"
               asChild
-              className="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[11px] font-bold h-7.5 px-3 rounded-full shadow-xs"
+              className="bg-linear-to-r from-blue-600 to-indigo-600 text-white text-[11px] font-bold h-7.5 px-3 rounded-full shadow-xs"
             >
-              <Link href="/contact" onClick={() => setIsOpen(false)}>
+              <Link href="/demo" onClick={() => setIsOpen(false)}>
                 ডেমো
               </Link>
             </Button>
@@ -179,7 +183,7 @@ const Navbar = () => {
                     <div
                       className={`p-1.5 rounded-xl ${
                         isActive
-                          ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-xs'
+                          ? 'bg-linear-to-r from-blue-600 to-indigo-600 text-white shadow-xs'
                           : 'bg-slate-100 text-slate-600'
                       }`}
                     >
@@ -200,23 +204,25 @@ const Navbar = () => {
                   asChild
                   className="w-full rounded-2xl border-slate-200 text-slate-800 bg-slate-50 hover:bg-slate-100 font-bold"
                 >
-                  <Link
-                    href="/login"
+                  <a
+                    href={`${env.frontendUrl}/login`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
                     className="flex items-center justify-center gap-1.5"
                   >
                     <LogIn className="w-3.5 h-3.5" />
                     <span>লগইন</span>
-                  </Link>
+                  </a>
                 </Button>
 
                 <Button
                   size="sm"
                   asChild
-                  className="w-full rounded-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-sky-600 text-white font-bold shadow-md shadow-blue-500/25"
+                  className="w-full rounded-2xl bg-linear-to-r from-blue-600 via-indigo-600 to-sky-600 text-white font-bold shadow-md shadow-blue-500/25"
                 >
                   <Link
-                    href="/contact"
+                    href="/demo"
                     onClick={() => setIsOpen(false)}
                     className="flex items-center justify-center gap-1.5"
                   >

@@ -89,8 +89,8 @@ const Banner = () => {
               asChild
               className="bg-linear-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold text-base px-7 h-12 rounded-xl shadow-md shadow-blue-500/20 hover:shadow-lg transition-all"
             >
-              <Link href="/contact" className="flex items-center gap-2">
-                <span>ফ্রি ডেমো বুক করুন</span>
+              <Link href="/demo" className="flex items-center gap-2">
+                <span>ফ্রি ডেমো দেখুন</span>
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </Button>
